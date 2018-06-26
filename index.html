@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function text(title, text) {
+        let textElement = document.createElement("p");
+        textElement.textContent = title + text;
+        document.body.appendChild(textElement);
+      }
+      function title(title) {
+        let textElement = document.createElement("p");
+        textElement.innerHTML = '<strong>' + title + '</strong><br />';
+        document.body.appendChild(textElement);
+      }
+      function add(x, y){
+        text("Added " + x + " and " + y + ":", x+y);
+        return x + y;
+      }
+
+      function multiply(x, y){
+        var a = 0;
+        for(let i = 1; i <= y; i++){
+          a = add(a, x);
+        }
+        text("Multiplied " + x + " and " + y + ":", a);
+        return a;
+      }
+
+      function power(x, n){
+        var a = x;
+        for(let i = 1; i <= n-1; i++){
+          a = multiply(a,x);
+        }
+        text(x + " to the power of " + n + ":", a);
+        return a;
+      }
+
+      function factorial(x){
+        var a = 1;
+        for(let i = 2; i <= x; i++){
+          a = multiply(a,i);
+        }
+        text("Factorial " + x + ":", a);
+        return a;
+      }
+
+      function fibonacci(n){
+        var a = 0, b = 1, f = 1;
+        for(var i = 2; i <= n; i++) {
+          f = a + b;
+          a = b;
+          b = f;
+          console.log(f);
+        }
+        text("Fib("+n+") = " + f.toString());
+        return f;
+      }
+
+      title("Add 5 and 2");
+      add(5,2);
+      title("Multiply 7*2");
+      multiply(7,2)
+      title("5 to the 4th power");
+      power(5, 4)
+      title("Factorialize 5");
+      factorial(5)
+      title("Fibonacci 5");
+      fibonacci(5);
+    </script>
+  </body>
+</html>
